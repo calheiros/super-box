@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:orientation="vertical" 
+	android:background="#fff" 
+	android:layout_width="match_parent" 
+	android:layout_height="match_parent">
+    <android.support.design.widget.AppBarLayout
+		android:id="@+id/appBarLayout"
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar 
+			android:id="@+id/toolbar" 
+			android:background="?attr/colorPrimary"
+			android:layout_width="match_parent" 
+			android:layout_height="?attr/actionBarSize" 
+			app:layout_scrollFlags="scroll|enterAlways" 
+			android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+    </android.support.design.widget.AppBarLayout>
+    <RelativeLayout
+		android:layout_width="match_parent" 
+		android:layout_height="match_parent">
+        <ListView 
+			android:scrollbarStyle="outsideOverlay" 
+			android:id="@+id/androidList"
+			android:padding="8dp" 
+			android:layout_width="match_parent" 
+			android:layout_height="match_parent"
+			android:divider="@null" 
+			android:choiceMode="multipleChoice" />
+        <TextView 
+			android:id="@+id/mTextView" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:layout_centerInParent="true" />
+    </RelativeLayout>
+</LinearLayout>

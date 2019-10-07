@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<resources>
+	<string name="selecionar_sdcard">Vocé precisa selecionar a pasta raiz do seu Cartão SD para continuar a tarefa.</string>
+	<string name="selecionar_um">Você deve selecionar pelo menos um.</string>
+	<string name="imagem">imagem</string>
+	<string name="video">vídeo</string>
+	<string name="criar_album">Criar album</string>
+	<string name="configuracoes">Configurações</string>
+	<string name="erro">Erro</string>
+	<string name="confirmacao">Confirmação</string>
+	<string name="quer_realmente_sair">Você quer realmente sair?</string>
+	<string name="bloquear_apps">Bloquear apps</string>
+	<string name="nao">Não</string>
+	<string name="salvar">Salvar</string>
+    <string name="renomear">Renomear</string>
+    <string name="armazenamento">Armazenamento</string>
+	<string name="armaz_interno">Armazenamento interno</string>
+	<string name="armaz_externo">Cartão de memória</string>
+	<string name="local_armazenamento">Local de armazenamento</string>
+	<string name="item">item</string>
+	<string name="itens">itens</string>
+	<string name="mover_galeria">Tem certeza de que deseja mover %s para a galeria?</string>
+    <string name="mover">Mover</string>
+	<string name="importar_galeria">Importar da galeria</string>
+	<string name="mudar_senha_descricao">Defina seu idioma"</string>
+	<string name="idioma">Idioma</string>
+	<string name="mudar_senha">Alterar senha</string>
+	<string name="escolha_idioma">Escolha seu idioma</string>
+	<string name="erro_info">Acima da versão de sistema operacional KITKAT o Safe Box pode não ter acesso nenhum ou ter acesso dificultado ao cartão de memória externo,  por isto, tenha certeza que as Imagens ou Videos que queira remover da galeria encontram-se na memória interna do dispositivo</string>
+	<string name="carregando">Carregando</string>
+	<string name="Alert_obter_mais_seguranca">Obtenha mais segurança!</string>
+	<string name="Alert_mais_seguranca_corpo">Conceda a permissão PACKAGE_USAGE_STATS para maior segurança</string>
+	<string name="invasor">Invasores</string>
+	<string name="entre_em_contato">Entre em contato</string>
+	<string name="compartilhar">Share</string>
+	<string name="comunicar">Comunicar</string>
+	<string name="configuracoes">Configurações</string>
+	<string name="desenhe_seu_padrao">Desenhe seu padrão de desbloqueio</string>
+	<string name="solte_para_terminar">Solte o dedo após terminar.</string>
+	<string name="desenhe_novamente">Desenhe o padrão novamente para confirma-lo.</string>
+	<string name="connect_mais">É necessário conectar pelo menos 4 pontos. Tente novamente.</string>
+	<string name="padrao_salvo">Padrão salvo.</string>
+	<string name="tente_de_novo">Tente novamente.</string>
+	<string name="imagem">imagem</string>
+	<string name="senha_definida_como">Seu padrão de desbloqueio foi definido como:</string>
+	<string name="apagar_mensagem">Tem certeza que quer apagar %s permanentimente?</string>
+	<string name="restart_to_change_linguage">Reinicie a aplicação para as mudanças terem efeito</string>
+	<string name="vazio">Nada aquí, toque em + para adicionar.</string>
+	<string name="intruder_vazio">Tudo limpo! Nenhum intruso foi capturado.</string>
+	<string name="inserir">Insira a senha</string>
+	<string name="criar">Definir senha</string>
+	<string name="hello_world">Hello world!</string>
+	<string name="descricao">descrição do aplicativo</string>
+	<string name="admin_receiver_status">recebido</string>
+	<string name="admin_receiver_status_enabled"> habilitado</string>
+	<string name="admin_receiver_status_disable_warning">Desabilitar adiminitrador?</string>
+	<string name="admin_receiver_status_disabled">desabled</string>
+	<string name="admin_receiver_status_pw_changed">mudou</string>
+	<string name="entrar">Entrar</string>
+	<string name="definir">Definir</string>
+	<string name="re_exibir">Tornar visível novamente</string>
+	<string name="compartilhar">Compartilhar</string>
+	<string name="sair">Sair?</string>
+	<string name="sim">Sim</string>
+	<string name="uma_tentativa">1 tentativa</string>
+	<string name="duas_tentativas">2 tentativas</string>
+	<string name="tres_tentativas">3 tentativas</string>
+	<string name="quatro_tentativas">4 tentativas</string>
+	<string name="tentativa">tentativa</string>
+	<string name="tentativas">tentativas</string>
+	<string name="imagens">Imagens</string>
+	<string name="videos">Vídeos</string>
+	<string name="ocultar_switch">Ocultar ícone</string>
+	<string name="senha_phone">Senha de chamada: </string>
+	<string name="call_descricao">Após ocultar você pode abrir o app apartir do discador chamando o número acima</string>
+	<string name="intruso_switch">Capturar possíveis intrusos</string>
+	<string name="capturar_apos">Capturar foto após:</string>
+	<string name="capturar_descricao">A foto é capturada após um determinado número de falhas ao tentar desbloquear o dispositivo"</string>
+	<string name="intruso_descricao">Captura fotos de possiveis intrusos ao tentar desbloquear o dispositivo</string>
+	<string name="ocultar_descricao">Ocultar o icone na grade de aplicativos</string>
+	<string name="message_dialog_camera">É preciso a permission CAMERA para a aplicação funcionar</string>
+	<string name="apagar">Apagar</string>
+	<string name="dialog_permission_title">Permissão!</string>
+	<string name="excluir">Excluir?</string>
+	<string name="excluir_face_intruder">A foto será apagada, tem certeza que deseja continuar?</string>
+	<string name="excluir_aviso_imagem">A imagem será apagada para sempre e não poderá ser recuperada, tem certeza que deseja continuar?</string>
+	<string name="excluir_aviso_video">O video será apagado para sempre e não poderá ser recuperado, tem certeza que deseja continuar?</string>
+	<string name="cancelar">Cancelar</string>
+	<string name="adiministrator_details">você deve ativar administração de dispositivo para certas funções do aplicativo funcionar</string>
+	<string name="pref_send_report">enviar relatórios de falhas</string>
+	<string name="pref_send_report_summary">ajude a corrigir erros</string>
+	<string name="pref_sync_frequency">frequência de sincronização</string>
+	<string name="pref_sync_frequency_summary">Set the sync frequency</string>
+	<string name="pref_user_name">nome de usuário</string>
+	<string name="pref_user_name_summary">definir o seu nome de usuário</string>
+
+	<string name="pref_user_profile">perfil do usuário</string>
+	<string name="pref_update_setting">Update Settings</string>
+	<string-array name="navigation_drawer_items_array">
+
+		<item>Imagens</item>
+		<item>Fixtures</item>
+		<item>Table</item>
+	</string-array>
+
+</resources>

@@ -1,0 +1,71 @@
+ <android.support.design.widget.CoordinatorLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:fitsSystemWindows="true"
+		tools:context="com.sample.foo.usingcoordinatorlayout.FabAndSnackbarActivity">
+
+		<android.support.design.widget.AppBarLayout
+			android:id="@+id/appBar"
+			android:layout_width="match_parent"
+			android:layout_height="260dp"
+			android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+			android:fitsSystemWindows="true">
+
+			<android.support.design.widget.CollapsingToolbarLayout
+				android:id="@+id/collapsingToolbar"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				app:layout_scrollFlags="scroll|exitUntilCollapsed"
+				android:fitsSystemWindows="true"
+				app:contentScrim="?attr/colorPrimary"
+				app:title="collapsing_toolbar">
+
+				<ImageView
+					android:id="@+id/toolbarImage"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:scaleType="centerCrop"
+					android:fitsSystemWindows="true"
+		
+					app:layout_collapseMode="parallax" />
+				
+				<de.hdodenhof.circleimageview.CircleImageView
+					android:layout_width="55dp"
+					android:layout_height="55dp"
+					android:layout_gravity="bottom|start"
+					android:layout_marginLeft="29dp"
+					android:layout_marginBottom="63dp"
+					android:id="@+id/imagePhoto">
+				</de.hdodenhof.circleimageview.CircleImageView>
+				
+				<android.support.v7.widget.Toolbar
+					android:id="@+id/toolbar"
+					android:layout_width="match_parent"
+					android:layout_height="?attr/actionBarSize"
+					app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+					app:layout_collapseMode="pin" />
+			</android.support.design.widget.CollapsingToolbarLayout>
+			
+		</android.support.design.widget.AppBarLayout>
+		<android.support.v4.widget.NestedScrollView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:fillViewport="true"
+			android:fadingEdgeLength="0dp"
+			app:layout_behavior="@string/appbar_scrolling_view_behavior">
+			
+			<ListView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:id="@+id/contact_info"/>
+			
+			
+		</android.support.v4.widget.NestedScrollView>
+	
+	 
+	</android.support.design.widget.CoordinatorLayout>
+	
+

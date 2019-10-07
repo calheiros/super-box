@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:gravity="center"
+	android:background="#00B4FF">
+
+	<RelativeLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:layout_marginBottom="15dp">
+
+		<EditText
+			android:layout_height="wrap_content"
+			android:inputType="textPassword"
+			android:layout_width="wrap_content"
+			android:ems="7"
+			android:focusable="false"
+			android:textSize="25sp"
+			android:textColor="#FFFFFF"
+			android:gravity="center"
+			android:id="@+id/pinactivityEditText1"
+			android:layout_centerHorizontal="true"/>
+
+		<ImageView
+			android:layout_height="32dp"
+			android:layout_width="35dp"
+			android:layout_toRightOf="@id/pinactivityEditText1"
+			android:layout_centerVertical="true"/>
+
+	</RelativeLayout>
+
+	<GridLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:columnCount="3"
+		android:orientation="horizontal">
+
+		<Button
+			style="?android:attr/buttonBarButtonStyle"
+			android:text="1"
+			android:layout_height="wrap_content"
+			android:layout_width="100dp"
+			android:textColor="#FFFFFF"
+			android:textSize="30sp"/>
+
+		<Button
+			style="?android:attr/buttonBarButtonStyle"
+			android:text="2"
+			android:layout_height="wrap_content"
+			android:layout_width="100dp"
+			android:textColor="#FFFFFF"
+			android:textSize="30sp"/>
+
+		<Button
+			style="?android:attr/buttonBarButtonStyle"
+			android:text="3"
+			android:layout_height="wrap_content"
+			android:layout_width="100dp"
+			android:textColor="#FFFFFF"
+			android:textSize="30sp"/>
+
+		<Button
+			style="?android:attr/buttonBarButtonStyle"
+			android:text="4"
+			android:layout_height="wrap_content"
+			android:layout_width="100dp"
+			android:textColor="#FFFFFF"
+			android:textSize="30sp"/>
+
+		<Button
+			style="?android:attr/buttonBarButtonStyle"
+			android:text="5"
+			android:layout_height="wrap_content"
+			android:layout_width="100dp"
+			android:textColor="#FCFCFC"
+			android:textSize="30sp"/>
+
+		<Button
+			style="?android:attr/buttonBarButtonStyle"
+			android:text="6"
+			android:layout_height="wrap_content"
+			android:layout_width="100dp"
+			android:textColor="#FFFFFF"
+			android:textSize="30sp"/>
+
+		<Button
+			style="?android:attr/buttonBarButtonStyle"
+			android:text="7"
+			android:layout_height="wrap_content"
+			android:layout_width="100dp"
+			android:textColor="#FFFFFF"
+			android:textSize="30sp"/>
+
+		<Button
+			style="?android:attr/buttonBarButtonStyle"
+			android:text="8"
+			android:layout_height="wrap_content"
+			android:layout_width="100dp"
+			android:textColor="#FFFFFF"
+			android:textSize="30sp"/>
+
+		<Button
+			style="?android:attr/buttonBarButtonStyle"
+			android:text="9"
+			android:layout_height="wrap_content"
+			android:layout_width="100dp"
+			android:textColor="#FFFFFF"
+			android:textSize="30sp"/>
+
+		<Button
+			style="?android:attr/buttonBarButtonStyle"
+			android:text="0"
+			android:layout_height="wrap_content"
+			android:layout_width="100dp"
+			android:layout_row="3"
+			android:layout_column="1"
+			android:textColor="#FFFFFF"
+			android:textSize="30sp"/>
+
+	</GridLayout>
+
+</LinearLayout>
+

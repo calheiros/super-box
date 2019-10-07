@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<resources>
+	<string name="importar_galeria">Importación de galería</string>
+	<string name="escolha_idioma">Elija su idioma</string>
+	<string name="mudar_senha_descricao">indica tu idioma</string>
+	<string name="idioma">Idioma</string>
+	<string name="mudar_senha">Cambia contraseña</string>
+    <string name="erro_info">Por encima de la versión del sistema operativo KITKAT el Safe Box puede no tener acceso ni tener acceso difícil a la tarjeta de memoria externa, por lo que asegúrese de que las Imágenes o Videos que quiera quitar de la galería se encuentran en la memoria interna del dispositivo</string>
+	<string name="invasor">Invasores</string>
+	<string name="entre_em_contato">Contacte con nosotros</string>
+	<string name="compartilhar">Share</string>
+	<string name="comunicar">Comunicar</string>
+	<string name="configuracoes">Configuraciones</string>
+	<string name="desenhe_seu_padrao">Dibuje su patrón de desbloqueo</string>
+	<string name="solte_para_terminar">Suelte el dedo después de terminar.</string>
+	<string name="desenhe_novamente">Dibuje el patrón de nuevo para confirmarlo.</string>
+	<string name="connect_mais">Debe conectar al menos 4 puntos. Vuelva a intentarlo. </string>
+	<string name="padrao_salvo">Patrón guardado.</string>
+	<string name="tente_de_novo">Inténtelo de nuevo.</string>
+	<string name="senha_definida_como">Su patrón de desbloqueo se definió como:</string>
+	<string name="restart_to_change_linguage">Reinicie a aplicação para as mudanças terem efeito</string>
+	<string name="vazio">No hay medios ocultos! Toque + para añadir</string>
+	<string name="intruder_vazio">¡Todo limpio! No se ha capturado ningún intruso.</string>
+	<string name="inserir">Introduzca la contraseña</string>
+	<string name="criar">Establecer contraseña </string>
+	<string name="hello_world">Hello world!</string>
+	<string name="descricao">descripción de la aplicación</string>
+	<string name="admin_receiver_status">recebido</string>
+	<string name="admin_receiver_status_enabled"> abilitado</string>
+	<string name="admin_receiver_status_disable_warning">Deshabilitar adiminitrador?</string>
+	<string name="admin_receiver_status_disabled">desabled</string>
+	<string name="admin_receiver_status_pw_changed">mudou</string>
+	<string name="entrar">Entrar</string>
+	<string name="definir">Definir</string>
+	<string name="re_exibir">Hacer visible de nuevo</string>
+	<string name="compartilhar">Compartir</string>
+	<string name="sair">Salir?</string>
+	<string name="sim">Sí</string>
+	<string name="uma_tentativa"> 1 intento</string>
+	<string name="duas_tentativas"> 2 intentos</string>
+	<string name="tres_tentativas"> 3 intentos</string>
+	<string name="quatro_tentativas"> 4 intentos</string>
+	<string name="tentativa">intento</string>
+	<string name="tentativas">intentos</string>
+	<string name="fotos">Fotos secretas</string>
+	<string name="videos">Videos secretos</string>
+	<string name="ocultar_switch">Ocultar icono</string>
+	<string name="senha_phone">Contraseña de llamada:</string>
+	<string name="call_descricao"> Después de ocultar, puede abrir la aplicación desde el marcador llamando al número anterior</string>
+	<string name="intruso_switch">Capturar posibles intrusos </string>
+	<string name="capturar_apos">Capturar foto después:</string>
+	<string name="capturar_descricao">La foto se captura después de un número determinado de errores al intentar desbloquear el dispositivo</string>
+	<string name="intruso_descricao">Captura fotos de posibles intrusos al intentar desbloquear el dispositivo</string>
+	<string name="ocultar_descricao">Ocultar el icono desde el lanzador</string>
+	<string name="message_dialog_camera">É preciso a permission CAMERA para a aplicação funcionar</string>
+	<string name="apagar">Borrar</string>
+	<string name="dialog_permission_title">Permissão!</string>
+	<string name="excluir">Borrar?</string>
+	<string name="excluir_face_intruder">La foto será borrada, ¿está seguro de que desea continuar?</string>
+	<string name="excluir_aviso_imagem">La imagen será borrada para siempre y no podrá ser recuperada, ¿está seguro de que desea continuar?</string>
+	<string name="excluir_aviso_video">El video será borrado para siempre y no podrá ser recuperado, ¿está seguro de que desea continuar? </string>
+	<string name="cancelar">Cancelar</string>
+	<string name="adiministrator_details">debe activar la administración de dispositivos para ciertas funciones de la aplicación funcionar </string>
+	<string name="pref_send_report">enviar relatórios de falhas</string>
+	<string name="pref_send_report_summary">ajude a corrigir erros</string>
+	<string name="pref_sync_frequency">frequência de sincronização</string>
+	<string name="pref_sync_frequency_summary">Set the sync frequency</string>
+	<string name="pref_user_name">nome de usuário</string>
+	<string name="pref_user_name_summary">definir o seu nome de usuário</string>
+
+	<string name="pref_user_profile">perfil do usuário</string>
+	<string name="pref_update_setting">Update Settings</string>
+	<string-array name="navigation_drawer_items_array">
+
+		<item>Imagens</item>
+		<item>Fixtures</item>
+		<item>Table</item>
+	</string-array>
+
+</resources>

@@ -1,0 +1,108 @@
+package com.jefferson.superbox.br.adapter;
+
+import android.content.*;
+import android.support.v7.widget.*;
+import android.util.*;
+import android.view.*;
+import android.view.View.*;
+import android.widget.*;
+import com.bumptech.glide.*;
+import com.jefferson.superbox.br.*;
+import com.jefferson.superbox.br.activity.*;
+import java.util.*;
+import com.squareup.picasso.*;
+
+public class Adapter_PhotosFolder extends ArrayAdapter<FolderModel> {
+	
+    GalleryAlbum galleryAlbum;
+    ViewHolder viewHolder;
+    ArrayList<FolderModel> al_menu = new ArrayList<>();
+    int option;
+
+    public Adapter_PhotosFolder(GalleryAlbum galleryAlbum, ArrayList<FolderModel> al_menu, int option) {
+        super(galleryAlbum, R.layout.adapter_photosfolder, al_menu);
+        this.al_menu = al_menu;
+        this.galleryAlbum = galleryAlbum;
+		this.option = option;
+    }
+
+	public void set(ArrayList<FolderModel> localList) {
+		al_menu = localList;
+		if (localList.size() > 0)
+			notifyDataSetChanged();
+		else
+			notifyDataSetInvalidated();
+	}
+
+    @Override
+    public int getCount() {
+        return al_menu.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        if (al_menu.size() > 0) {
+            return al_menu.size();
+        } else {
+            return 1;
+        }
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+
+		
+       if (convertView == null) {
+            viewHolder = new ViewHolder();
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_photosfolder, parent, false);
+            viewHolder.tv_foldern = (TextView) convertView.findViewById(R.id.tv_folder);
+            viewHolder.tv_foldersize = (TextView) convertView.findViewById(R.id.tv_folder2);
+            viewHolder.iv_image = (ImageView) convertView.findViewById(R.id.iv_image);
+			viewHolder.cd_layout = (CardView) convertView.findViewById(R.id.card_view);
+
+			viewHolder.cd_layout.setOnClickListener(new OnClickListener(){
+
+					@Override
+					public void onClick(View v) {
+						
+							Intent intent = new Intent(galleryAlbum, Gridview_selection.class);
+							intent.putExtra("name", al_menu.get(position).getName());
+							intent.putExtra("data", al_menu.get(position).getItems());
+							intent.putExtra("type", galleryAlbum.getType());
+
+							galleryAlbum.startActivityForResult(intent, GalleryAlbum.GET_CODE);
+
+						}
+				});
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
+		FolderModel f_model = al_menu.get(position);
+		viewHolder.tv_foldern.setText(f_model.getName());
+		viewHolder.tv_foldersize.setText(String.valueOf(f_model.getItems().size()));
+
+		if (f_model.getItems().size() != 0) {
+			Glide.with(galleryAlbum).load("file://" + f_model.getItems().get(0))
+				.skipMemoryCache(true)
+				.into(viewHolder.iv_image);
+        } 
+        return convertView;
+    }
+
+    private static class ViewHolder {
+        TextView tv_foldern, tv_foldersize;
+        ImageView iv_image;
+		CardView cd_layout;
+    }
+}

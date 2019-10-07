@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:orientation="vertical"
+	android:id="@+id/main_linear_layout"
+	android:layout_height="match_parent">
+
+	<android.support.design.widget.AppBarLayout
+		android:id="@+id/tabanim_appbar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+		<include
+			layout="@layout/toolbar"/>
+
+	</android.support.design.widget.AppBarLayout>
+
+	<RelativeLayout
+		android:layout_height="match_parent"
+		android:layout_weight="1"
+		android:layout_width="match_parent">
+
+		<android.support.v7.widget.RecyclerView
+			android:id="@+id/my_recycler_view"
+			android:scrollbars="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:padding="1dp"/>
+
+	</RelativeLayout>
+
+	<LinearLayout
+		android:id="@+id/lock_layout"
+		android:visibility="gone"
+		android:background="#f0f0f0"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent">
+
+		<ImageView
+			android:layout_weight="1.0"
+			android:id="@+id/unlockView"
+			android:background="?attr/selectableItemBackground"
+			android:layout_height="40dp"
+			android:layout_width="0dp"
+			android:padding="5dp"
+			android:src="@drawable/ic_unluck_item"/>
+
+		<ImageView
+			android:layout_weight="1.0"
+			android:background="?attr/selectableItemBackground"
+			android:layout_height="40dp"
+			android:layout_width="0dp"
+			android:padding="6dp"
+			android:id="@+id/deleteView"
+			android:src="@drawable/ic_delete_all"/>
+
+		<ImageView
+			android:layout_weight="1.0"
+			android:background="?attr/selectableItemBackground"
+			android:layout_height="40dp"
+			android:layout_width="0dp"
+			android:id="@+id/moveView"
+			android:padding="5dp"
+			android:visibility="gone"
+			android:src="@drawable/ic_move_item"/>
+
+		<ImageView
+			android:layout_weight="1.0"
+			android:background="?attr/selectableItemBackground"
+			android:layout_height="40dp"
+			android:layout_width="0dp"
+			android:id="@+id/selectView"
+			android:padding="5dp"
+			android:src="@drawable/ic_select_all"/>
+
+	</LinearLayout>
+
+</LinearLayout>
+

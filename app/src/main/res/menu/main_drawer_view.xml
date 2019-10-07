@@ -1,0 +1,29 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	
+    <group android:checkableBehavior="single">
+		<item
+			android:icon="@drawable/ic_imagem"
+			android:id="@+id/main_item1"
+			android:title="Galeria privada"/>
+		<item
+			android:icon="@drawable/ic_lock"
+			android:id="@+id/main_item2"
+			android:title="@string/bloquear_apps"/>
+		<item 
+			android:icon="@drawable/ic_config"
+			android:id="@+id/item3"
+			android:title="@string/configuracoes"/>
+    </group>
+	<item android:title="Comunicar">
+		<menu>
+			<item 
+				android:id="@+id/item_4"
+				android:icon="@drawable/ic_share"
+				android:title="Compartilhar" />
+			<item 
+				android:id="@+id/item_5"
+				android:icon="@drawable/ic_bug"
+				android:title="Relatar bug"/>
+		</menu>
+	</item>
+</menu>
