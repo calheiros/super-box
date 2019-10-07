@@ -1,5 +1,0 @@
-<resources>
-    <string name="google_storage_bucket" translatable="false">apple-security-f3fa5.appspot.com</string>
-    <string name="firebase_database_url" translatable="false">https://apple-security-f3fa5.firebaseio.com</string>
-    <string name="gcm_defaultSenderId" translatable="false">434127760836</string>
-</resources>
