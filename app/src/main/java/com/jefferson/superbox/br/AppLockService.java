@@ -30,12 +30,10 @@ public class AppLockService extends Service {
 
 	@Override
 	public void onCreate() {
-		
 		AppsAdapter.service = this;
 		mDabase = new AppsDatabase(this);
 		lockScreen = new WindowLockApps(getApplicationContext(), mDabase);
 		//mLockedApps = mDabase.getLockedApps();
-		
 		startService();
 
         mybroadcast = new ScreenOnOff();
@@ -83,7 +81,7 @@ public class AppLockService extends Service {
 
 		@Override
 		public void handleMessage(Message msg) {
-			String ActivityOnTop = Utils.getRunningApplication();
+			String ActivityOnTop = com.jefferson.superbox.br.util.Utils.getTopActivityApplication();
 			if(toast) Toast.makeText(AppLockService.this,"Is true!",1).show();
 			if (!ActivityOnTop.equals(pActivity)) {
 				pActivity = ActivityOnTop;

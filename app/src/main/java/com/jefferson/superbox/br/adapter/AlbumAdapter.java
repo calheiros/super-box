@@ -13,45 +13,54 @@ import com.squareup.picasso.*;
 import java.util.*;
 import com.jefferson.superbox.br.util.*;
 
-public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.viewHolder> {
-	
+public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.viewHolder>
+{
+
 	private AlbumFragment fragment;
 	private ArrayList<FolderModel> items;
 	private View group;
 
-	public AlbumAdapter(AlbumFragment fragment , ArrayList<FolderModel> items) {
+	public AlbumAdapter(AlbumFragment fragment , ArrayList<FolderModel> items)
+	{
 		this.fragment = fragment;
 		this.items = items;
 	}
 
-	public void setUpdatedData(ArrayList<FolderModel> localList) {
+	public void setUpdatedData(ArrayList<FolderModel> localList)
+	{
 		items = localList;
 		notifyDataSetChanged();
 	}
 	@Override
-	public viewHolder onCreateViewHolder(ViewGroup parent, int p2) {
+	public viewHolder onCreateViewHolder(ViewGroup parent, int p2)
+	{
 		group = parent;
 		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_photosfolder, parent, false);
 		return new viewHolder(view);
 	}
 
 	@Override
-	public void onBindViewHolder(final viewHolder holder, final int position) {
+	public void onBindViewHolder(final viewHolder holder, final int position)
+	{
 		FolderModel f_model = items.get(position);
 	    holder.tv_foldern.setText(f_model.getName());
 		holder.tv_foldersize.setText(String.valueOf(f_model.getItems().size()));
-		
-		if (f_model.getItems().size() != 0) {
+
+		if (f_model.getItems().size() != 0)
+		{
 			Glide.with(fragment).load("file://" + f_model.getItems().get(0))
 				.skipMemoryCache(true)
 				.into(holder.iv_image);
-        }else {
+        }
+		else
+		{
 			Picasso.with(fragment.getContext()).load(Thumbnails.getThumbnail()).fit().centerCrop().into(holder.iv_image);
 		}
 		holder.cd_layout.setOnClickListener(new OnClickListener(){
 
 				@Override
-				public void onClick(View view) {
+				public void onClick(View view)
+				{
 					Intent intent = new Intent(fragment.getContext(), ViewAlbum.class);
 					intent.putExtra("position", fragment.getPagerPosition());
 					intent.putExtra("name", items.get(position).getName());
@@ -63,14 +72,17 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.viewHolder> 
 		holder.cd_layout.setOnLongClickListener(new View.OnLongClickListener(){
 
 				@Override
-				public boolean onLongClick(final View view) {
+				public boolean onLongClick(final View view)
+				{
 					final String[] options = {"Apagar", "Renomear"};
 					AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
 					builder.setItems(options, new DialogInterface.OnClickListener(){
 
 							@Override
-							public void onClick(DialogInterface p1, int p2) {
-								if(p2 == 0 ) {
+							public void onClick(DialogInterface p1, int p2)
+							{
+								if (p2 == 0)
+								{
 									fragment.deleteAlbum(items.get(position));
 								}
 							}
@@ -82,23 +94,26 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.viewHolder> 
 	}
 
 	@Override
-	public int getItemCount() {
+	public int getItemCount()
+	{
 
 		return items.size();
 	}
 
-	public class viewHolder extends RecyclerView.ViewHolder {
+	public class viewHolder extends RecyclerView.ViewHolder
+	{
 		TextView tv_foldern, tv_foldersize;
         ImageView iv_image;
 		CardView cd_layout;
 
-		public viewHolder(View view) {
+		public viewHolder(View view)
+		{
 			super(view);
 		    tv_foldern = (TextView) view.findViewById(R.id.tv_folder);
             tv_foldersize = (TextView) view.findViewById(R.id.tv_folder2);
             iv_image = (ImageView) view.findViewById(R.id.iv_image);
 			cd_layout = (CardView) view.findViewById(R.id.card_view);
-			
-			}
+
+		}
 	}
 }

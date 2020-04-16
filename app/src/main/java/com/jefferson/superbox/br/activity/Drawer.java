@@ -19,12 +19,6 @@ import com.jefferson.superbox.br.*;
 import com.jefferson.superbox.br.fragment.*;
 import java.io.*;
 import java.util.*;
-import org.apache.http.*;
-import org.apache.http.client.*;
-import org.apache.http.client.entity.*;
-import org.apache.http.client.methods.*;
-import org.apache.http.impl.client.*;
-import org.apache.http.message.*;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -260,19 +254,7 @@ public class Drawer extends MyCompatActivity {
 		alert.create().show();
 
 	}
-    private void sendData(String Value) {
-		HttpClient client = new DefaultHttpClient();
-		HttpPost post = new HttpPost("www.exemplo.server.php");
-
-		ArrayList<NameValuePair> valores = new ArrayList<NameValuePair>();
-	    valores.add(new BasicNameValuePair("num_star", Value));
-
-		try {
-			post.setEntity(new UrlEncodedFormEntity(valores));
-			client.execute(post);
-		} catch (UnsupportedEncodingException e) {} catch (IOException e) {}
-
-	}
+    
 	@Override
 	protected void onRestart() {
 		super.onRestart();

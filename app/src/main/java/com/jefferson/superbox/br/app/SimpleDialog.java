@@ -89,7 +89,7 @@ public class SimpleDialog extends AlertDialog {
     }
 
 	private void configure(int style) {
-		// TODO: Implement this method
+	
 		contentText.setVisibility(View.GONE);
 		contentTitle.setVisibility(View.GONE);
 		showNegativeButton(false);

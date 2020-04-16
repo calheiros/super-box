@@ -14,15 +14,15 @@ import com.squareup.picasso.*;
 
 public class Adapter_PhotosFolder extends ArrayAdapter<FolderModel> {
 	
-    GalleryAlbum galleryAlbum;
-    ViewHolder viewHolder;
-    ArrayList<FolderModel> al_menu = new ArrayList<>();
-    int option;
+    private GalleryAlbum mGalleryAlbum;
+    private ViewHolder mViewHolder;
+    private ArrayList<FolderModel> al_menu = new ArrayList<>();
+    private int option;
 
     public Adapter_PhotosFolder(GalleryAlbum galleryAlbum, ArrayList<FolderModel> al_menu, int option) {
         super(galleryAlbum, R.layout.adapter_photosfolder, al_menu);
         this.al_menu = al_menu;
-        this.galleryAlbum = galleryAlbum;
+        this.mGalleryAlbum = galleryAlbum;
 		this.option = option;
     }
 
@@ -63,39 +63,39 @@ public class Adapter_PhotosFolder extends ArrayAdapter<FolderModel> {
 
 		
        if (convertView == null) {
-            viewHolder = new ViewHolder();
+            mViewHolder = new ViewHolder();
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_photosfolder, parent, false);
-            viewHolder.tv_foldern = (TextView) convertView.findViewById(R.id.tv_folder);
-            viewHolder.tv_foldersize = (TextView) convertView.findViewById(R.id.tv_folder2);
-            viewHolder.iv_image = (ImageView) convertView.findViewById(R.id.iv_image);
-			viewHolder.cd_layout = (CardView) convertView.findViewById(R.id.card_view);
+            mViewHolder.tv_foldern = (TextView) convertView.findViewById(R.id.tv_folder);
+            mViewHolder.tv_foldersize = (TextView) convertView.findViewById(R.id.tv_folder2);
+            mViewHolder.iv_image = (ImageView) convertView.findViewById(R.id.iv_image);
+			mViewHolder.cd_layout = (CardView) convertView.findViewById(R.id.card_view);
 
-			viewHolder.cd_layout.setOnClickListener(new OnClickListener(){
+			mViewHolder.cd_layout.setOnClickListener(new OnClickListener(){
 
 					@Override
 					public void onClick(View v) {
 						
-							Intent intent = new Intent(galleryAlbum, Gridview_selection.class);
+							Intent intent = new Intent(mGalleryAlbum, Gridview_selection.class);
 							intent.putExtra("name", al_menu.get(position).getName());
 							intent.putExtra("data", al_menu.get(position).getItems());
-							intent.putExtra("type", galleryAlbum.getType());
+							intent.putExtra("type", mGalleryAlbum.getType());
 
-							galleryAlbum.startActivityForResult(intent, GalleryAlbum.GET_CODE);
+							mGalleryAlbum.startActivityForResult(intent, GalleryAlbum.GET_CODE);
 
 						}
 				});
-            convertView.setTag(viewHolder);
+            convertView.setTag(mViewHolder);
         } else {
-            viewHolder = (ViewHolder) convertView.getTag();
+            mViewHolder = (ViewHolder) convertView.getTag();
         }
 		FolderModel f_model = al_menu.get(position);
-		viewHolder.tv_foldern.setText(f_model.getName());
-		viewHolder.tv_foldersize.setText(String.valueOf(f_model.getItems().size()));
+		mViewHolder.tv_foldern.setText(f_model.getName());
+		mViewHolder.tv_foldersize.setText(String.valueOf(f_model.getItems().size()));
 
 		if (f_model.getItems().size() != 0) {
-			Glide.with(galleryAlbum).load("file://" + f_model.getItems().get(0))
+			Glide.with(mGalleryAlbum).load("file://" + f_model.getItems().get(0))
 				.skipMemoryCache(true)
-				.into(viewHolder.iv_image);
+				.into(mViewHolder.iv_image);
         } 
         return convertView;
     }

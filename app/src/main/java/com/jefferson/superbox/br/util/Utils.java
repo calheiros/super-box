@@ -4,14 +4,13 @@ import android.app.*;
 import android.app.usage.*;
 import android.content.*;
 import android.net.*;
-import android.net.wifi.*;
-import android.widget.*;
+import android.util.*;
 import com.jefferson.superbox.br.*;
 import java.util.*;
 
 public class Utils {
 
-	public static String getRunningApplication() {
+	public static String getTopActivityApplication() {
 
 		String currentApp = "NULL";
 		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
@@ -35,22 +34,19 @@ public class Utils {
 		}
 		return currentApp;
 	}
-	public static boolean isMyServiceRunning(Class serviceClass)
-	{
-		for (ActivityManager.RunningServiceInfo service : ((ActivityManager)App.getInstance().getSystemService(Context.ACTIVITY_SERVICE)).getRunningServices(Integer.MAX_VALUE))
-		{
-			if (serviceClass.getName().equals(service.service.getClassName()))
-			{
+	public static boolean isMyServiceRunning(Class serviceClass) {
+		for (ActivityManager.RunningServiceInfo service : ((ActivityManager)App.getInstance().getSystemService(Context.ACTIVITY_SERVICE)).getRunningServices(Integer.MAX_VALUE)) {
+			if (serviceClass.getName().equals(service.service.getClassName())) {
 				return true;
 			}
 		}
 		return false;
 	}
 	public static boolean isConnected(Context context) {
-		
+
 		ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo netInfo = connectivity.getActiveNetworkInfo();
-		
-		return netInfo!= null && netInfo.isConnected();
+
+		return netInfo != null && netInfo.isConnected();
 	}
 }

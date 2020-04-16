@@ -19,9 +19,11 @@ import java.util.*;
 
 import android.support.v7.widget.Toolbar;
 
-public class LockFragment extends Fragment {
+public class LockFragment extends Fragment
+{
 
-	public LockFragment() {
+	public LockFragment()
+	{
 		initTask();
 	}
 
@@ -35,21 +37,27 @@ public class LockFragment extends Fragment {
 	private View adapterView, view;
 	private Task mTask;
 
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+	{
 
 		MainActivity mActivity = ((MainActivity)getActivity());
-		if (view == null) {
+		if (view == null)
+		{
 			view = inflater.inflate(R.layout.list_view_apps, container, false);
 			mProgressBar = (ProgressBar)view.findViewById(R.id.progressApps);            
 			mTextView = (TextView) view.findViewById(R.id.porcent);
 			mListView = (ListView) view.findViewById(R.id.appList);
 			mListView.setItemsCanFocus(true);
-			
-			if (mTask != null) {
+
+			if (mTask != null)
+			{
 				AsyncTask.Status status = mTask.getStatus();
-				if (status == AsyncTask.Status.FINISHED) {
+				if (status == AsyncTask.Status.FINISHED)
+				{
 					finalizeTask();
-				} else {
+				}
+				else
+				{
 					mProgressBar.setVisibility(View.VISIBLE);
 					mTextView.setVisibility(View.VISIBLE);
 				} 
@@ -58,19 +66,24 @@ public class LockFragment extends Fragment {
 			mListView.setOnItemClickListener(new OnItemClickListener() {
 
 					@Override
-					public void onItemClick(AdapterView<?> p1, View vi, int position, long p4) {
+					public void onItemClick(AdapterView<?> p1, View vi, int position, long p4)
+					{
 						mPosition = position;
 						adapterView = vi;
 
-						if (!needPermissionForBlocking(getContext())) {
+						if (!needPermissionForBlocking(getContext()))
+						{
 							mAdapter.toogleSelection(position);
-						} else {
+						}
+						else
+						{
 							AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
 							alert.setMessage("Apartir do android 5.0 acima você precisa ativar a permisão \"Acessar dados de uso\" para esta função funcionar corretamente.");
 							alert.setPositiveButton("conceder", new DialogInterface.OnClickListener(){
 
 									@Override
-									public void onClick(DialogInterface p1, int p2) {
+									public void onClick(DialogInterface p1, int p2)
+									{
 										startActivityForResult(intent, 0);
 									}});
 							alert.setNegativeButton("Ignorar", null);
@@ -80,41 +93,48 @@ public class LockFragment extends Fragment {
 						}
 					}
 				});
-		
+
 		}
 		Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
 		mActivity.setupToolbar(toolbar, getString(R.string.bloquear_apps));
 		mActivity.getSupportActionBar().dispatchMenuVisibilityChanged(true);
 		return view;
 	}
-	public void initTask() {
+	public void initTask()
+	{
 
 		mTask = new Task(App.app);
 		mTask.execute();
 	}
-	public void finalizeTask() {
-		
+	public void finalizeTask()
+	{
+
 		mAdapter = new AppsAdapter(getActivity(), models);
 		mListView.setAdapter(mAdapter);
 		mProgressBar.setVisibility(View.GONE);
 		mTextView.setVisibility(View.GONE);
 	}
-	private boolean needPermissionForBlocking(Context context) {
+	private boolean needPermissionForBlocking(Context context)
+	{
 		return CodeManager.needPermissionForGetUsages(context);
 	}
 
 	@Override
-	public void onDestroy() {
+	public void onDestroy()
+	{
 
-		if(mTask.getStatus() != AsyncTask.Status.FINISHED)
+		if (mTask.getStatus() != AsyncTask.Status.FINISHED)
 			mTask.cancel(true);
 
 		super.onDestroy();
 	}
-	
+
 	@Override
-	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (!CodeManager.needPermissionForGetUsages(getContext())) {
+	public void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+
+		if (!CodeManager.needPermissionForGetUsages(getContext()))
+		{
 			mAdapter.toogleSelection(mPosition);
 		}
 		super.onActivityResult(requestCode, resultCode, data);
@@ -125,26 +145,31 @@ public class LockFragment extends Fragment {
 	{
 		inflater.inflate(R.menu.menu, menu);
 		super.onCreateOptionsMenu(menu, inflater);
-	}
-	
-	private class Task extends AsyncTask {
+	} 
+
+	private class Task extends AsyncTask
+	{
 
         private Context context;
         private double progress;
-        public Task(Context context) {
+        public Task(Context context)
+		{
             this.context = context;
         }
 
 		@Override
-		protected void onProgressUpdate(Object[] values) {
+		protected void onProgressUpdate(Object[] values)
+		{
 			super.onProgressUpdate(values);
 			if (mTextView != null)
 				mTextView.setText(String.valueOf((int)progress) + "%");
 		}
 
         @Override
-        protected Void doInBackground(Object... params) {
-			try {
+        protected Void doInBackground(Object... params)
+		{
+			try
+			{
 				Intent launch = new Intent(Intent.ACTION_MAIN, null);
 				launch.addCategory(Intent.CATEGORY_LAUNCHER);
 
@@ -152,8 +177,9 @@ public class LockFragment extends Fragment {
 				List<ResolveInfo> apps = pm.queryIntentActivities(launch, 0);
 				Collections.sort(apps, new ResolveInfo.DisplayNameComparator(pm)); 
 
-				for (int i = 0;i < apps.size();i++) {
-					if(isCancelled())
+				for (int i = 0;i < apps.size();i++)
+				{
+					if (isCancelled())
 						break;
 					ResolveInfo p = apps.get(i);
 
@@ -169,14 +195,17 @@ public class LockFragment extends Fragment {
 					progress = (double)100 / apps.size() * i;
 					publishProgress();
 				}
-			} catch (NullPointerException e) {
+			}
+			catch (NullPointerException e)
+			{
 				Log.e("Lock Fragment err", e.toString());
 			}
 			return null;
 		}
 
         @Override
-        protected void onPostExecute(Object v) {
+        protected void onPostExecute(Object v)
+		{
 			if (view != null)
 				finalizeTask();
 		}

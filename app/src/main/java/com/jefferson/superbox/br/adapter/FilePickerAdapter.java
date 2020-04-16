@@ -10,6 +10,7 @@ import com.jefferson.superbox.br.model.*;
 import java.util.*;
 
 public class FilePickerAdapter extends BaseAdapter {
+	
     private Context context;
     private LayoutInflater mLayoutInflater;
     public List<PickerModel> models;

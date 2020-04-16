@@ -117,8 +117,10 @@ public class WindowLockApps {
 		return null;
 	}
 	public class PatternListener extends MaterialLockView.OnPatternListener {
-		Context context;
-        PasswordManager passManager;
+		
+		private Context context;
+        private PasswordManager passManager;
+		
 		public PatternListener(Context context) {
 			this.context = context;
 			this.passManager = new PasswordManager(context);
@@ -155,6 +157,5 @@ public class WindowLockApps {
 		private Object correctPass() {
 			return passManager.getPassword();
 		}
-
 	}
 }

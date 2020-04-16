@@ -18,11 +18,10 @@ import com.jefferson.superbox.br.adapter.*;
 import com.jefferson.superbox.br.task.*;
 import java.io.*;
 import java.util.*;
-
 import android.support.v7.widget.Toolbar;
 
 public class GalleryAlbum extends MyCompatActivity {
-	
+
     private boolean boolean_folder;
     private Adapter_PhotosFolder obj_adapter;
 	private int position;
@@ -32,21 +31,18 @@ public class GalleryAlbum extends MyCompatActivity {
     private static final int REQUEST_PERMISSIONS = 100;
 	public static final int GET_CODE = 5658;
 	private String title;
-	
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gallery_album);
-		
+
         gv_folder = (GridView)findViewById(R.id.gv_folder);
 		sharedPrefrs = PreferenceManager.getDefaultSharedPreferences(this);
-
-		Intent intent = getIntent();
-	    position = intent.getExtras().getInt("position");
+	    position = getIntent().getExtras().getInt("position");
 
 		if (position == 0 || position == 1) {
-			
-			title = position == 0 ? "Importar imagens" : "Importar vídeos";
+			title = (position == 0 ? getString(R.string.importar_imagem) : getString(R.string.importar_video));
 			new LoadItems().execute();
 		}
 		setupToolbar();
@@ -58,7 +54,7 @@ public class GalleryAlbum extends MyCompatActivity {
 				return FileModel.IMAGE_TYPE;
 			case 1:
 				return FileModel.VIDEO_TYPE;
-		    default: throw new Error();
+		    default: throw new IllegalArgumentException();
 		}
 	}
 
@@ -68,7 +64,7 @@ public class GalleryAlbum extends MyCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setTitle(title);
-	
+
     }
 
 	@Override
@@ -76,7 +72,7 @@ public class GalleryAlbum extends MyCompatActivity {
 		finish();
 		return super.onOptionsItemSelected(item);
 	}
-	
+
     public ArrayList<FolderModel> fn_imagespath() {
 	    ArrayList<FolderModel> al_images = new ArrayList<FolderModel>();
 
@@ -152,7 +148,6 @@ public class GalleryAlbum extends MyCompatActivity {
 			i.putExtra("type", getType());
 			i.putExtra("position", position);
 			setResult(RESULT_OK, (i));
-			//Toast.makeText(this, "paths size :"+ paths.size(),1).show();
 			finish();
 		}
 		super.onActivityResult(requestCode, resultCode, data);
@@ -170,13 +165,16 @@ public class GalleryAlbum extends MyCompatActivity {
 						} else {
 							Toast.makeText(GalleryAlbum.this, "The app was not allowed to read or write to your storage. Hence, it cannot function properly. Please consider granting it this permission", Toast.LENGTH_LONG).show();
 						}
-					}}
-		}}
+					}
+				}
+		}
+	}
 
-	private class LoadItems extends AsyncTask {
-		ProgressBar myProgress;
+	private class LoadItems extends AsyncTask<Void, Void, ArrayList<FolderModel>>  {
+
+		private ProgressBar myProgress;
         public LoadItems() {
-			myProgress = (ProgressBar)findViewById(R.id.galleryalbumProgressBar);
+			this.myProgress = (ProgressBar) findViewById(R.id.galleryalbumProgressBar);
 		}
 
 		@Override
@@ -186,18 +184,16 @@ public class GalleryAlbum extends MyCompatActivity {
 		}
 
 		@Override
-		protected void onPostExecute(Object result) {
+		protected void onPostExecute(ArrayList<FolderModel> result) {
 			myProgress.setVisibility(View.GONE);
 	        if (result != null) {
-				ArrayList<FolderModel> modelList = (ArrayList<FolderModel>)result;
-
-				setAdapter(modelList);
+				setAdapter(result);
 			}
 			super.onPostExecute(result);
 		}
 
 		@Override
-		protected Object doInBackground(Object[] object) {
+		protected ArrayList<FolderModel> doInBackground(Void[] object) {
 			return fn_imagespath();
 		}
 	}

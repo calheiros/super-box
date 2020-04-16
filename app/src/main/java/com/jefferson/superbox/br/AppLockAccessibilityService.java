@@ -15,7 +15,7 @@ import com.jefferson.superbox.br.widget.*;
 import java.util.*;
 
 public class AppLockAccessibilityService extends android.accessibilityservice.AccessibilityService {
-
+	
 	private ArrayList<String> logPackages;
     private static String TAG = AppLockAccessibilityService.class.getName();
 	private String activityOnTop;
@@ -111,7 +111,6 @@ public class AppLockAccessibilityService extends android.accessibilityservice.Ac
 							super.onPatternDetected(pattern, SimplePattern);
 
 						}});
-
 				wm.addView(v, params);
 				pActivity = activityOnTop;
 			}

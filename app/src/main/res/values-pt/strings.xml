@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <resources>
+	<string name="importar_imagem">Importar Imagens</string>
+	<string name="importar_video">Importar Vídeos</string>
 	<string name="selecionar_sdcard">Vocé precisa selecionar a pasta raiz do seu Cartão SD para continuar a tarefa.</string>
 	<string name="selecionar_um">Você deve selecionar pelo menos um.</string>
 	<string name="imagem">imagem</string>
@@ -30,7 +32,6 @@
 	<string name="carregando">Carregando</string>
 	<string name="Alert_obter_mais_seguranca">Obtenha mais segurança!</string>
 	<string name="Alert_mais_seguranca_corpo">Conceda a permissão PACKAGE_USAGE_STATS para maior segurança</string>
-	<string name="invasor">Invasores</string>
 	<string name="entre_em_contato">Entre em contato</string>
 	<string name="compartilhar">Share</string>
 	<string name="comunicar">Comunicar</string>
@@ -45,7 +46,7 @@
 	<string name="senha_definida_como">Seu padrão de desbloqueio foi definido como:</string>
 	<string name="apagar_mensagem">Tem certeza que quer apagar %s permanentimente?</string>
 	<string name="restart_to_change_linguage">Reinicie a aplicação para as mudanças terem efeito</string>
-	<string name="vazio">Nada aquí, toque em + para adicionar.</string>
+	<string name="vazio">Nada aquí...</string>
 	<string name="intruder_vazio">Tudo limpo! Nenhum intruso foi capturado.</string>
 	<string name="inserir">Insira a senha</string>
 	<string name="criar">Definir senha</string>
