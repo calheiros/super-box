@@ -37,7 +37,7 @@ public class MaterialLockView extends View {
             this.row = row;
             this.column = column;
         }
-
+ 
         /**
          * Gets the ID.It is counted from left to right, top to bottom of the matrix, starting by zero.
          *

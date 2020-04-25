@@ -46,18 +46,13 @@ public class MainActivity extends MyCompatActivity implements NavigationView.OnN
 	private int position;
 	private static MainActivity instante;
 	private ArrayList<FileModel> models;
-	
 	private static final int GET_URI_CODE_TASK = 54;
-
 	private AdView adview;
-
 	private InterstitialAd interstitial;
     
 	public static MainActivity getInstance() {
-		// TODO: Implement this method
 		return instante;
 	}
-	//private TJPlacement videoPlacement;
 
 	public void update(MainFragment.ID id) {
 
@@ -276,10 +271,9 @@ public class MainActivity extends MyCompatActivity implements NavigationView.OnN
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
-
-		if (!Utils.isMyServiceRunning(AppLockService.class)) {
+		/*if (!Utils.isMyServiceRunning(AppLockService.class)) {
 			startService(new Intent(this, AppLockService.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-		}
+		}*/
 	}
 
 	@Override
@@ -353,7 +347,6 @@ public class MainActivity extends MyCompatActivity implements NavigationView.OnN
 
 				@Override
 				public boolean onClick(SimpleDialog dialog) {
-                    //StartAppAd.onBackPressed(MainActivity.this);
 					finish();
 					return true;
 				}
@@ -363,32 +356,27 @@ public class MainActivity extends MyCompatActivity implements NavigationView.OnN
 	@Override
     public void onStart() {
         super.onStart();
-        Chartboost.onStart(this);
     }
     @Override
     public void onResume() {
         super.onResume();
-        Chartboost.onResume(this);
 		adview.resume();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Chartboost.onPause(this);
 		adview.pause();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Chartboost.onStop(this);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Chartboost.onDestroy(this);
 		adview.destroy();
     }
 }

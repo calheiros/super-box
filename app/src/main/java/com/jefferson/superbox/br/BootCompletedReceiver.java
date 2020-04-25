@@ -12,6 +12,7 @@ public class BootCompletedReceiver extends BroadcastReceiver
 		Log.w("boot_broadcast_poc", "starting service...");
 		new AppsDatabase(context).clearUnlockedApps();
 		context.startService(new Intent(context, AppLockService.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+	    
 	}
 }
 

@@ -32,6 +32,7 @@
 	<!--android:manageSpaceActivity=".activity.VerifyActivity"-->
     <application
 		android:name=".App"
+		android:resizeableActivity="false"
         android:allowBackup="true"
 		android:icon="@drawable/ic_launcher"
 		android:hardwareAccelerated="true"
@@ -122,7 +123,7 @@
 			android:screenOrientation="portrait"
 			android:theme="@style/MainTheme"/>
 		<activity
-			android:name=".activity.Gridview_selection"
+			android:name=".activity.SelectionActivity"
 			android:excludeFromRecents="true"
 			android:configChanges="orientation|screenSize"
 			android:theme="@style/MainTheme"/>
@@ -148,6 +149,7 @@
 
             </intent-filter>
 		</receiver>
+		
 		<receiver
 			android:name=".receber_adm"
 			android:description="@string/descricao"      
@@ -186,7 +188,16 @@
 				<action android:name="RestartBlockService"/>
 			</intent-filter>
 		</receiver>
-
+		<service android:name=".AppLockAccessibilityService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:label="@string/app_name">
+			<intent-filter>
+				<action android:name="android.accessibilityservice.AccessibilityService" />
+			</intent-filter>
+			<meta-data
+				android:name="android.accessibilityservice"
+				android:resource="@xml/accessibility_service_config"/>
+        </service>
 		<service
 			android:name=".AppLockService"
 			android:exported="false"
@@ -197,7 +208,7 @@
 			android:excludeFromRecents="true"
 			android:screenOrientation="portrait"
 			android:theme="@style/MainTheme"/>
-
+  
 		<activity
 			android:name=".activity.Visualizar_Imagem"
 			android:configChanges="orientation|screenSize"

@@ -16,6 +16,7 @@ import java.io.*;
 import java.util.*;
 
 import android.support.v4.app.Fragment;
+import com.jefferson.superbox.br.task.*;
 
 public class AlbumFragment extends Fragment {
 	
@@ -94,17 +95,9 @@ public class AlbumFragment extends Fragment {
 		db.close();
 		return models;
 	}
-	final class DeleteAlbumTask extends AsyncTask {
-
-		private FolderModel f_model;
-	    private PathsData.Folder folderDatabase;
-		private PathsData pathDatabase;
-		
-		public DeleteAlbumTask(FolderModel f_model) {
-			this.f_model = f_model;
-			this.folderDatabase = PathsData.Folder.getInstance(getContext());
-			this.pathDatabase = PathsData.getInstance(getContext(), Storage.getDefaultStorage());
-			
+	final class DeleteAlbumTask extends DeleteFilesTask  {
+		public DeleteAlbumTask(Context p1, ArrayList<String> p2, int p3, File p4) {
+			super(p1, p2,p3,p4);
 		}
 		@Override
 		protected void onPreExecute() {
@@ -113,25 +106,12 @@ public class AlbumFragment extends Fragment {
 
 		@Override
 		protected void onPostExecute(Object result) {
-			((MainActivity)getActivity()).update(getPagerPosition() == 0 ? MainFragment.ID.FIRST:MainFragment.ID.SECOND);
 			super.onPostExecute(result);
+			((MainActivity)getActivity()).update(getPagerPosition() == 0 ? MainFragment.ID.FIRST:MainFragment.ID.SECOND);
+			
 		}
         
-		@Override
-		protected Object doInBackground(Object[] obj) {
-			for(String path :f_model.getItems()) {
-				File file = new File(path);
-			    if(file.delete()) {
-					pathDatabase.deleteData(file.getName());
-				}
-			}
-			File folder_file = new File(f_model.getPath());
-			if(folder_file.delete()) {
-				folderDatabase.delete(folder_file.getName(), position == 0 ? FileModel.IMAGE_TYPE : FileModel.VIDEO_TYPE);
-			}
-			folderDatabase.close();
-			return null;
-		}
+		
 	}
     public void deleteAlbum(final FolderModel model) {
 		
@@ -143,7 +123,8 @@ public class AlbumFragment extends Fragment {
 
 				@Override
 				public void onClick(DialogInterface inter, int p2) {
-					new DeleteAlbumTask(model).execute();
+					File root = new File(model.getPath());
+					new DeleteAlbumTask(getContext(), model.getItems(), position, root).execute();
 				}
 		});
 		builder.setNegativeButton("Não", null);

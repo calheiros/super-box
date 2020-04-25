@@ -16,8 +16,6 @@ import android.support.v7.app.AlertDialog;
 
 public class ReceiverMedia extends Activity {
 
-	private ArrayList<Uri> mediaUris;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,7 +34,7 @@ public class ReceiverMedia extends Activity {
 		if (action.equals(Intent.ACTION_SEND)) {
 
 			Uri uri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
-			File mFile = new File(CodeManager.getPathFromMediaUri(uri, this));
+			File mFile = new File(Storage.getPathFromMediaUri(uri, this));
 
 			ArrayList<FileModel> models = new ArrayList<>();
 			FileModel model = getModel(mFile.getPath());
@@ -48,25 +46,13 @@ public class ReceiverMedia extends Activity {
 			}
 		} else if (action.equals(intent.ACTION_SEND_MULTIPLE)) {
 
-			mediaUris = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
-			ArrayList<FileModel> models = new ArrayList<>();
-
-			for (Uri uri : mediaUris) {
-				String path = CodeManager.getPathFromMediaUri(uri, this);
-				FileModel model = getModel(path);
-				if (model != null)
-					models.add(model);
-			}
-			if (models.size() > 0) {
-				new ImportTask(models, this, ImportTask.SESSION_OUTSIDE_APP).execute();
-			} else {
-				Toast.makeText(this, "Arquivo(s) não suportado(s)", Toast.LENGTH_LONG).show();
-				finish();
-			}
+			ArrayList<Uri> mediaUris = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+			BuildModelsTast mTask = new BuildModelsTast(mediaUris, this);	
+			mTask.execute();
+			//task here
 		}}
 
 	private FileModel getModel(String res) {
-		
 		FileModel model = new FileModel();
 		model.setResource(res);
 
@@ -80,8 +66,68 @@ public class ReceiverMedia extends Activity {
 			model.setType(FileModel.VIDEO_TYPE);
 		} else return null;
 
-
 		return model;
+	}
+
+	private class BuildModelsTast  extends AsyncTask<Void, Integer, ArrayList<FileModel>> {
+
+
+		private ArrayList<Uri> mediaUris;
+		private Activity activity;
+		private ProgressDialog mProgressDialog;
+		
+		public BuildModelsTast(ArrayList<Uri> mediaUris, Activity activity) {
+			this.mediaUris = mediaUris;
+			this.activity = activity;
+
+		}
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			mProgressDialog = new ProgressDialog(activity);
+			mProgressDialog.setTitle("Preparing...");
+			mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+			mProgressDialog.setCancelable(false);
+			mProgressDialog.show();
+			
+		}
+
+		@Override
+		protected void onProgressUpdate(Integer[] values) {
+			super.onProgressUpdate(values);
+			Integer index = values[0];
+			mProgressDialog.setMessage(index + " of " + mediaUris.size());
+		}
+
+		@Override
+		protected void onPostExecute(ArrayList<FileModel> result) {
+			super.onPostExecute(result);
+			mProgressDialog.dismiss();
+			
+			if (result.size() > 0) {
+				new ImportTask(result, activity, ImportTask.SESSION_OUTSIDE_APP).execute();
+			} else {
+				Toast.makeText(activity, "Arquivo(s) não suportado(s)", Toast.LENGTH_LONG).show();
+				finish();
+			}
+		}
+
+		@Override
+		protected ArrayList<FileModel> doInBackground(Void[] p1) {
+
+			ArrayList<FileModel> models = new ArrayList<>();
+			int index = 0;
+			
+			for (Uri uri : mediaUris) {
+				publishProgress(++index);
+				String path = Storage.getPathFromMediaUri(uri, App.getInstance());
+				FileModel model = getModel(path);
+				if (model != null)
+					models.add(model);
+			}
+			return models;
+		}
 	}
 }
 	

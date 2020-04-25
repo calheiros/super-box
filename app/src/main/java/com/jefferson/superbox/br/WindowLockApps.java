@@ -33,8 +33,8 @@ public class WindowLockApps {
 		params = new WindowManager.LayoutParams(
 			WindowManager.LayoutParams.MATCH_PARENT,
 			WindowManager.LayoutParams.MATCH_PARENT,
-			WindowManager.LayoutParams.TYPE_PRIORITY_PHONE,
-			WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
+			WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
+			WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
 			PixelFormat.RGBX_8888);
 
 		params.windowAnimations = android.R.style.Animation_Dialog;
@@ -46,7 +46,7 @@ public class WindowLockApps {
 		return LayoutInflater.from(context).inflate(R.layout.pattern, mLayout);
 	}
 	
-	public void updateView() { 
+	public void refreshView() { 
 
 		createView();
 		if (isLocked()) {

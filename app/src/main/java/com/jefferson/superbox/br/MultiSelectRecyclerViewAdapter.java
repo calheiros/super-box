@@ -16,15 +16,17 @@ public class MultiSelectRecyclerViewAdapter extends SelectableAdapter<MultiSelec
     public ArrayList<String> mListItemsPath;
     private static Context context;
     private ViewHolder.ClickListener clickListener;
-
-    public MultiSelectRecyclerViewAdapter(Context context, ArrayList<String> arrayList, ViewHolder.ClickListener clickListener) {
+	private int mediaType;
+	
+    public MultiSelectRecyclerViewAdapter(Context context, ArrayList<String> arrayList, ViewHolder.ClickListener clickListener, int mediaType) {
         this.mListItemsPath = arrayList;
         this.context = context;
         this.clickListener = clickListener;
+		this.mediaType = mediaType;
     }
 
 	public void removeAll(ArrayList<String> list) {
-		// TODO: Implement this method
+	
 		this.mListItemsPath.removeAll(list);
 		notifyDataSetChanged();
 	}
@@ -38,12 +40,13 @@ public class MultiSelectRecyclerViewAdapter extends SelectableAdapter<MultiSelec
 		}
 	}
 
-
     @Override
     public MultiSelectRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.gridview_item, null);
         ViewHolder viewHolder = new ViewHolder(itemLayoutView, clickListener);
-
+		if (mediaType == 1)
+			viewHolder.playView.setVisibility(View.VISIBLE);
+		
         return viewHolder;
     }
 
@@ -64,6 +67,8 @@ public class MultiSelectRecyclerViewAdapter extends SelectableAdapter<MultiSelec
         public ImageView imageView;
         private ClickListener listener;
         private final View selectedOverlay;
+
+		public ImageView playView;
 	
         public ViewHolder(View itemLayoutView, ClickListener listener) {
             super(itemLayoutView);
@@ -71,8 +76,9 @@ public class MultiSelectRecyclerViewAdapter extends SelectableAdapter<MultiSelec
             this.listener = listener;
 		
             imageView = (ImageView) itemLayoutView.findViewById(R.id.image);
+			playView = (ImageView) itemLayoutView.findViewById(R.id.play_view);
             selectedOverlay = itemView.findViewById(R.id.selected_overlay);
-
+		
             itemLayoutView.setOnClickListener(this);
 
             itemLayoutView.setOnLongClickListener(this);

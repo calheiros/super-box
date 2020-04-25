@@ -2,6 +2,7 @@ package com.jefferson.superbox.br.util;
 
 import android.annotation.*;
 import android.content.*;
+import android.database.*;
 import android.media.*;
 import android.net.*;
 import android.os.*;
@@ -11,16 +12,9 @@ import android.provider.*;
 import android.provider.MediaStore.*;
 import android.support.v4.provider.*;
 import android.util.*;
-
 import com.jefferson.superbox.br.*;
 import java.io.*;
 import java.util.*;
-import me.relex.photodraweeview.*;
-
-import me.relex.photodraweeview.BuildConfig;
-import com.jefferson.superbox.br.activity.*;
-import android.support.v7.app.*;
-import android.widget.*;
 
 public class Storage extends DocumentUtil {
 
@@ -160,6 +154,21 @@ public class Storage extends DocumentUtil {
 				App.getAppContext().sendBroadcast(intent);
 			}
 		}
+	}
+	public static String getPathFromMediaUri(Uri uri, Context context) {
+		
+		String filePath = null;
+		if (uri != null && "content".equals(uri.getScheme())) {
+			String[] proj = { MediaStore.Video.Media.DATA };
+			Cursor cursor = context.getContentResolver().query(uri, proj, null, null, null);
+			int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+			cursor.moveToFirst();
+			return cursor.getString(column_index);
+		} else {
+			filePath = uri.getPath();
+		}
+		Log.d("", "Chosen path = " + filePath);
+		return filePath;
 	}
     public static void mediaScannerConnection(String[] strArr) {
 

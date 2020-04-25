@@ -17,7 +17,16 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:scaleType="centerCrop"/>
-		
+		<ImageView
+			android:layout_width="50dp"
+			android:layout_gravity="center"
+			android:layout_height="50dp"
+			android:id="@+id/play_view"
+			android:src="@drawable/ic_play"
+			android:visibility="gone"
+			android:scaleType="centerCrop"
+			android:layout_centerInParent="true"/>
+
 		<FrameLayout
 			android:id="@+id/selected_overlay"
 			android:layout_width="match_parent"

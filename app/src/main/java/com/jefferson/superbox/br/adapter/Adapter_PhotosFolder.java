@@ -69,17 +69,22 @@ public class Adapter_PhotosFolder extends ArrayAdapter<FolderModel> {
             mViewHolder.tv_foldersize = (TextView) convertView.findViewById(R.id.tv_folder2);
             mViewHolder.iv_image = (ImageView) convertView.findViewById(R.id.iv_image);
 			mViewHolder.cd_layout = (CardView) convertView.findViewById(R.id.card_view);
-
+			mViewHolder.play_view = (ImageView) convertView.findViewById(R.id.play_view);
+			
+			if (option == 1)
+				mViewHolder.play_view.setVisibility(View.VISIBLE);
+			
 			mViewHolder.cd_layout.setOnClickListener(new OnClickListener(){
 
 					@Override
 					public void onClick(View v) {
 						
-							Intent intent = new Intent(mGalleryAlbum, Gridview_selection.class);
+							Intent intent = new Intent(mGalleryAlbum, SelectionActivity.class);
 							intent.putExtra("name", al_menu.get(position).getName());
 							intent.putExtra("data", al_menu.get(position).getItems());
 							intent.putExtra("type", mGalleryAlbum.getType());
-
+							intent.putExtra("position", option);
+							
 							mGalleryAlbum.startActivityForResult(intent, GalleryAlbum.GET_CODE);
 
 						}
@@ -104,5 +109,6 @@ public class Adapter_PhotosFolder extends ArrayAdapter<FolderModel> {
         TextView tv_foldern, tv_foldersize;
         ImageView iv_image;
 		CardView cd_layout;
+		ImageView play_view;
     }
 }

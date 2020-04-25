@@ -21,13 +21,28 @@
 			android:orientation="vertical"
 			android:layout_height="wrap_content">
 
-			<ImageView
+			<FrameLayout
 				android:layout_width="match_parent"
-				android:layout_gravity="center"
-				android:layout_height="100dp"
-				android:background="#000"
-				android:id="@+id/iv_image"
-				android:scaleType="centerCrop"/>
+				android:layout_height="match_parent">
+
+				<ImageView
+					android:layout_width="match_parent"
+					android:layout_gravity="center"
+					android:layout_height="100dp"
+					android:background="#000"
+					android:id="@+id/iv_image"
+					android:scaleType="centerCrop"/>
+
+				<ImageView
+					android:layout_width="50dp"
+					android:layout_gravity="center"
+					android:layout_height="50dp"
+					android:id="@+id/play_view"
+					android:src="@drawable/ic_play"
+					android:visibility="gone"
+					android:scaleType="centerCrop"/>
+
+			</FrameLayout>
 
 			<TextView
 				android:layout_width="wrap_content"

@@ -300,23 +300,6 @@ public class CodeManager {
 		} catch (IOException e) {
 		}
 	}
-	public static String getPathFromMediaUri(Uri uri, Context context) {
-		String filePath = null;
-
-		if (uri != null && "content".equals(uri.getScheme())) {
-			String[] proj = { MediaStore.Video.Media.DATA };
-			Cursor cursor = context.getContentResolver().query(uri, proj, null, null, null);
-			int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-			cursor.moveToFirst();
-			return cursor.getString(column_index);
-
-		} else {
-
-			filePath = uri.getPath();
-		}
-		Log.d("", "Chosen path = " + filePath);
-		return filePath;
-	}
 	public static void callBroadCast(File file, Context Context) {
 
 		if (Build.VERSION.SDK_INT >= 19) {

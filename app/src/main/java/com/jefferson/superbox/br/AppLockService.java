@@ -49,7 +49,7 @@ public class AppLockService extends Service {
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE || newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-			lockScreen.updateView();
+			lockScreen.refreshView();
 	    }
 		super.onConfigurationChanged(newConfig);
 	}
@@ -82,7 +82,6 @@ public class AppLockService extends Service {
 		@Override
 		public void handleMessage(Message msg) {
 			String ActivityOnTop = com.jefferson.superbox.br.util.Utils.getTopActivityApplication();
-			if(toast) Toast.makeText(AppLockService.this,"Is true!",1).show();
 			if (!ActivityOnTop.equals(pActivity)) {
 				pActivity = ActivityOnTop;
 				if (mDabase.getLockedApps().contains(ActivityOnTop) && !mDabase.isAppUnlocked(ActivityOnTop)) {
@@ -103,11 +102,5 @@ public class AppLockService extends Service {
 	private void showMessage(String m) {
 		Toast.makeText(this, m, Toast.LENGTH_LONG).show();
 	}
-	public class Update extends BroadcastReceiver {
-
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			showMessage("Hello");
-		}
-	}
+	
 }
