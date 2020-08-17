@@ -7,7 +7,7 @@ import android.view.*;
 import android.view.View.*;
 import android.view.animation.*;
 import android.widget.*;
-import com.chartboost.sdk.*;
+
 import com.google.android.gms.ads.*;
 import com.jefferson.superbox.br.*;
 import com.jefferson.superbox.br.activity.*;

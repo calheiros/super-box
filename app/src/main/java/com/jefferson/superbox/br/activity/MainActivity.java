@@ -14,8 +14,6 @@ import android.support.v7.app.*;
 import android.support.v7.widget.*;
 import android.view.*;
 import android.widget.*;
-import com.chartboost.sdk.*;
-import com.chartboost.sdk.impl.*;
 import com.google.android.gms.ads.*;
 import com.jefferson.superbox.br.*;
 import com.jefferson.superbox.br.app.*;
@@ -78,8 +76,6 @@ public class MainActivity extends MyCompatActivity implements NavigationView.OnN
 		setContentView(R.layout.main_activity);
         this.instante = this;
 	     
-        Chartboost.startWithAppId(this, "5c7346a7b052405c0ea8d264","68bcf9a534659fb69d21acb473304e27856d5d80");
-		Chartboost.onCreate(this);
 		MobileAds.initialize(this);
 		
 		drawerLayout = (DrawerLayout) findViewById(R.id.mainDrawerLayout);

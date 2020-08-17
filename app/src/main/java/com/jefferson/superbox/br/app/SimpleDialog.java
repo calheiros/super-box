@@ -12,12 +12,6 @@ import java.util.*;
 public class SimpleDialog extends AlertDialog
 {
 
-	@Override
-	public void onProvideKeyboardShortcuts(List<KeyboardShortcutGroup> data, Menu menu, int deviceId)
-	{
-	
-	}
-
 	public static final int PROGRESS_STYLE = 123;
 	public static final int ALERT_STYLE = 321;
 	private View contentView;
