@@ -5,7 +5,6 @@
 	android:layout_height="fill_parent"
 	android:orientation="vertical">
 
-
 	<SurfaceView
 		android:id="@+id/surfaceView"
 		android:layout_weight="1"
